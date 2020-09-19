@@ -80,12 +80,19 @@ class ArabicTokenize(Tokenize):
 
         for t in super().tokenize(sentence, *args, **kwargs):
             temp_tokens = []
+            # stem = stemmer("arabic").stemWord(t)
+            if t.startswith('\u0644') and t[1:] == stemmer("arabic").stemWord(t[1:]):
+                temp_tokens.append(t[0:1])
+                temp_tokens.append(t[1:])
+                t = ''
             # # لل
             if t.startswith('\u0644\u0644'):
                 temp_tokens.append(t[0:1])
                 temp_tokens.append(t[1:])
                 t = ''
-            else:
+            
+            if len(t) > 0:
                 tokens += self.__name_follows(t)
+                
             tokens += temp_tokens
         return tokens

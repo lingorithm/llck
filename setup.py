@@ -10,7 +10,7 @@ def readme():
         return f.read()
 
 
-setup(name='llck', version='0.1.0',
+setup(name='llck', version='0.1.2',
       author='Mohamed Mahrous',
       author_email='m.mahrous.94@gmail.com',
       url='https://github.com/lingorithm/llck',
@@ -20,6 +20,9 @@ setup(name='llck', version='0.1.0',
       long_description_content_type='text/markdown',
       package_dir={'llck': 'llck', },
       packages=['llck'],
+      install_requires=[
+          'snowballstemmer'
+      ],
       classifiers=[
           'Development Status :: 2 - Pre-Alpha',
           'Natural Language :: Arabic',
